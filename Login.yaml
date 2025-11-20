@@ -1,0 +1,47 @@
+appId: com.ultratechplus.clync
+---
+- launchApp:
+    clearState: true
+
+#Skip the On Boarding Screens     
+- tapOn: Skip
+
+# Reach the login page
+- tapOn: Login
+- assertVisible:
+    text: Welcome back!
+    label: User is on the login page
+
+# Login with invalid credentials
+- tapOn: Username
+- inputText: ${WrongUsername}
+- hideKeyboard
+- tapOn: Password
+- inputText: ${WrongPassword}
+- hideKeyboard
+- tapOn: Login
+- assertVisible: .*Invalid username.*
+
+# Erase All invalid data
+- longPressOn: Username
+- eraseText
+- longPressOn: Password
+- eraseText
+
+# Login with valid credentials successfully
+- tapOn: Username
+- inputText: ${Username}
+- hideKeyboard
+- tapOn: Password
+- inputText: ${Password}
+- hideKeyboard
+- tapOn: Login
+- assertVisible: .*What's on your mind?.*
+
+# Try to login through the lock screen
+- killApp
+- launchApp
+- tapOn: Password
+- inputText: ${Password}
+- hideKeyboard
+- tapOn: Login

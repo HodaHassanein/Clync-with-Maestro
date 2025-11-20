@@ -1,0 +1,15 @@
+appId: com.ultratechplus.clync
+---
+#Close Post model without creating anything
+- tapOn: Post
+- tapOn: .*Write something.*
+- inputText: ${Post}
+- tapOn:
+    point: 90%,22%
+
+# Create Post on communnity
+- tapOn: Post
+- tapOn: .*Write something.*
+- inputText: ${Post}
+- tapOn: Post
+
