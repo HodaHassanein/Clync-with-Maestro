@@ -1,4 +1,8 @@
 appId: com.ultratechplus.clync
 ---
 
-- runFlow: login.yaml 
+- runFlow:
+    when:
+      platform: android
+    file: login.yaml  
+    

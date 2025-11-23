@@ -1,5 +1,6 @@
 appId: com.ultratechplus.clync
 ---
+#_______________POST_________________
 #Close Post model without creating anything
 - tapOn: Post
 - tapOn: .*Write something.*
@@ -12,4 +13,10 @@ appId: com.ultratechplus.clync
 - tapOn: .*Write something.*
 - inputText: ${Post}
 - tapOn: Post
-
+- assertVisible: .*What's Up?.*
+  
+# Add Reply to the created post 
+- tapOn:
+   text: .*What's Up?.*
+- tapOn: .*Write your message.*
+- inputText: 

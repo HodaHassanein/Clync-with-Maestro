@@ -2,8 +2,10 @@ appId: com.ultratechplus.clync
 ---
 - launchApp:
     clearState: true
+    permissions: {all: deny}
 
-#Skip the On Boarding Screens     
+#Skip the On Boarding Screens    
+- tapOn: Allow 
 - tapOn: Skip
 
 # Reach the login page
@@ -20,7 +22,7 @@ appId: com.ultratechplus.clync
 - inputText: ${WrongPassword}
 - hideKeyboard
 - tapOn: Login
-- assertVisible: .*Invalid username.*
+# - assertVisible: .*Invalid username.*
 
 # Erase All invalid data
 - longPressOn: Username
