@@ -1,0 +1,65 @@
+appId: com.ultratechplus.clync
+---
+#_______________POST_________________
+#Close Post model without creating anything
+- tapOn: Post
+- tapOn: .*Write something.*
+- inputText: ${Post}
+- tapOn:
+    point: 90%,22%
+
+# Create Post on communnity
+- tapOn: Post
+- tapOn: .*Write something.*
+- inputText: ${Post}
+- tapOn: 
+   text: Post
+   
+# Add Reply to the created post
+- extendedWaitUntil:
+    visible: .*This post for testing.* 
+    timeout: 10000
+- tapOn:
+    text: .*This post for testing?.*
+- tapOn: .*Write your message.*
+- inputText: ${Reply1}
+- hideKeyboard
+- tapOn:
+    point: 50%,50%
+
+# Scrolling on the community to find specific Receipt 
+- scrollUntilVisible:
+    centerElement: true
+    speed: 20
+    element:
+      text: .*Pepsi.*
+- tapOn: show Receipt
+- tapOn: See more
+- swipe:
+    from:
+      text: Dismiss
+    direction: DOWN
+  
+# Scrolling on the community to delete specific Receipt 
+- scrollUntilVisible:
+    centerElement: true
+    speed: 40
+    element:
+      text: .*Stars.*
+- tapOn: show Receipt
+- tapOn: .*Delete.*
+- assertVisible: |-
+    Success
+    Receipt deleted successfully
+
+# Adding vote to specific poll ,view and delete this poll  
+- scrollUntilVisible:
+    centerElement: true
+    speed: 40
+    element:
+      text: .*Mohamed  Salah  Created Poll.*
+- tapOn: .*Picnic.*
+- tapOn: View Votes
+- tapOn: Delete Poll
+
+
