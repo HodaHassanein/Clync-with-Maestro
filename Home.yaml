@@ -8,13 +8,23 @@ appId: com.ultratechplus.clync
 - tapOn:
     point: 90%,22%
 
-# Create Post on communnity
+# Create Post on community
 - tapOn: Post
 - tapOn: .*Write something.*
 - inputText: ${Post}
 - tapOn: 
    text: Post
-   
+
+
+# __________________ CAN"T ADD REPLY , EDIT OR DELETE POST WITH MAESTRO _____________________
+# Edit or Delete Post on Community   
+- tapOn: .*This post.*
+- tapOn:
+    index: 4
+    rightOf : .*Write your.*
+    point: 90%,35%
+    id: 00000000-0000-0635-0000-004f00000004
+
 # Add Reply to the created post
 - extendedWaitUntil:
     visible: .*This post for testing.* 
@@ -27,6 +37,8 @@ appId: com.ultratechplus.clync
 - tapOn:
     point: 50%,50%
 
+
+#_____________________COMMUNITY_____________________
 # Scrolling on the community to find specific Receipt 
 - scrollUntilVisible:
     centerElement: true
@@ -63,3 +75,6 @@ appId: com.ultratechplus.clync
 - tapOn: Delete Poll
 
 
+
+
+    

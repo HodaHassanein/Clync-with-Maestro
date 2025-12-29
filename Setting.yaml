@@ -1,0 +1,40 @@
+appId: com.ultratechplus.clync
+---
+- launchApp:
+    clearState: true
+
+# _______________Account Info______________
+- tapOn: Account info
+- assertVisible: 
+   text: Account Info
+   label: User is on the account info page 
+
+# Change username 
+- tapOn: Username
+- eraseText: 1 
+- hideKeyboard
+- tapOn: .*Save.*
+
+# Return the old username 
+- tapOn: Username
+- eraseText 
+- inputText: ${Username}
+- hideKeyboard
+- tapOn: .*Save.*
+
+# Change password
+- tapOn: Change
+- tapOn: Password
+- inputText: ${Password}
+- tapOn: Continue
+- tapOn: Password
+- inputText: ${NewPassword}
+- tapOn: Save changes
+
+# Login with the new password 
+- killApp
+- launchApp
+- tapOn: Password
+- inputText: ${NewPassword}
+- hideKeyboard
+- tapOn: Login
